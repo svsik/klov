@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
+
+body {
+	font-family: "Source Sans Pro", "Gudea", "Helvetica Neue", "HelveticaNeue-Light", Helvetica, Arial, sans-serif !important;
+}
+.sl-item:after {
+	border-left-width: 1px;
+}
+.box {
+	box-shadow: none !important;
+}
+.log pre {
+    padding: 1.5em 1em !important;
+    margin-bottom: 0 !important;
+}
+.avatar > .filler {
+	display: block;
+	margin-bottom: 8px;
+}
+.avatar > .filler + small > i {
+	top: 10px !important;
+	left: 9px !important;
+	border: none !important;
+	background-color: transparent !important;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th {
+	border-color: #e4eaec;
+}
+body.grey .table > tbody > tr > td, body.grey .table > tbody > tr > th, body.grey .table > tfoot > tr > td, body.grey .table > tfoot > tr > th,
+body.dark .table > tbody > tr > td, body.dark .table > tbody > tr > th, body.dark .table > tfoot > tr > td, body.dark .table > tfoot > tr > th,
+body.black .table > tbody > tr > td, body.black .table > tbody > tr > th, body.black .table > tfoot > tr > td, body.black .table > tfoot > tr > th {
+	border-color: rgba(120, 130, 140, 0.45);
+}
+.table td, .table th {
+    padding: .572rem;
+}
