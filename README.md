@@ -1,6 +1,6 @@
 ## klov.
 
-[![Join the chat at https://gitter.im/anshooarora/klov](https://badges.gitter.im/anshooarora/klov.svg)](https://gitter.im/anshooarora/klov?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/anshooarora/klov](https://badges.gitter.im/anshooarora/klov.svg)](https://gitter.im/anshooarora/klov?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee786f7b7f7f4947b4953398428efa18)](https://www.codacy.com/app/anshooarora/klov?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=anshooarora/klov&amp;utm_campaign=Badge_Grade)
 
 Demo:  [klov.herokuapp.com](http://klov.herokuapp.com)
 
