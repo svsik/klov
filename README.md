@@ -1,5 +1,7 @@
 ## klov.
 
+[![Join the chat at https://gitter.im/anshooarora/klov](https://badges.gitter.im/anshooarora/klov.svg)](https://gitter.im/anshooarora/klov?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Demo:  [klov.herokuapp.com](http://klov.herokuapp.com)
 
 Reporting server for Extent API. * klov replaces ExtentX.
