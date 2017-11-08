@@ -25,6 +25,7 @@ body {
 }
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th {
 	border-color: #e4eaec;
+	word-break: break-all !important;
 }
 body.grey .table > tbody > tr > td, body.grey .table > tbody > tr > th, body.grey .table > tfoot > tr > td, body.grey .table > tfoot > tr > th,
 body.dark .table > tbody > tr > td, body.dark .table > tbody > tr > th, body.dark .table > tfoot > tr > td, body.dark .table > tfoot > tr > th,
