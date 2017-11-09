@@ -40,12 +40,7 @@ var MODULE_CONFIG = {
                       'libs/parsleyjs/dist/parsley.css',
                       'libs/parsleyjs/dist/parsley.min.js'
                     ],
-    select2:        [
-                      'libs/select2/dist/css/select2.min.css',
-                      'libs/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
-                      'libs/select2-bootstrap-theme/dist/select2-bootstrap.4.css',
-                      'libs/select2/dist/js/select2.min.js'
-                    ],
+    select2:        [],
     datetimepicker: [],
     bootstrapWizard:[],
     fullCalendar:   [
