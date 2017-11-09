@@ -11,7 +11,6 @@
 <script src="/libs/jquery-pjax/jquery.pjax.js"></script>
 <script src="/libs/blockUI/jquery.blockUI.js"></script>
 <script src="/libs/jscroll/jquery.jscroll.min.js"></script>
-<script src="/libs/select2/dist/js/select2.min.js"></script>
 
 <script src="/scripts/config.lazyload.js"></script>
 <script src="/scripts/ui-load.js"></script>
@@ -29,10 +28,6 @@
 <script src="/scripts/app.js"></script>
 <script src="/scripts/ajax.js"></script>
 <script src="/libs/jquery-matchHeight/jquery-matchHeight-min.js"></script>
-
-<!-- chartjs -->
-<script src="/libs/chart.js/dist/chartjs-2.3.0.min.js"></script>
-<script src="/libs/chart.js/dist/jquery.chart.js"></script>
 
 <!-- lightbox -->
 <script src="/libs/featherlight/featherlight.js"></script>
