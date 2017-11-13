@@ -67,7 +67,6 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 
     @Override
     public List<AggregationCount> findTestLengthForPastNReports(Optional<Project> project, int reportLength) {
-        System.out.println(reportLength);
         List<Report> reportList = reportRepo.findIdByCountOrderByDateTimeDesc(project, reportLength);
         List<ObjectId> ids = reportList.stream().map(Report::getId).map(x -> new ObjectId(x)).collect(Collectors.toList()); 
         
