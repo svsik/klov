@@ -114,16 +114,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-lg w-lg w-auto-md white bg">
-								<div>
-									<div class="p-a">
-										<h6 class="text-muted m-a-0">Activity</h6>
-									</div>
-									<div class="streamline">
-										
-									</div>
-								</div>
-							</div>
 						</div>
 					<!-- ############ PAGE END-->
 					<#else>
