@@ -19,3 +19,4 @@
 <script src="/api/controllers/ProjectController.js"></script>
 <script src="/api/controllers/ReportController.js"></script>
 <script src="/api/controllers/TestController.js"></script>
+<script src="/api/controllers/CategoryController.js"></script>
