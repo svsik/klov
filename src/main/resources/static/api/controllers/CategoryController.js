@@ -1,9 +1,14 @@
 angular.module('Klov')
-	.controller('CategoryController', ['$rootScope', '$scope', '$http', '$location', 'Icon', 'ChartSettings', 'PieChartSettings', 'LineChartSettings', 'BarChartSettings', 'DataPointFormat',
-    function($rootScope, $scope, $http, $location, Icon, ChartSettings, PieChartSettings, LineChartSettings, BarChartSettings, DataPointFormat) {
+	.controller('CategoryController', ['$rootScope', '$scope', '$http', '$location', 'Icon', 'ChartSettings', 'PieChartSettings', 'BarChartSettings',
+    function($rootScope, $scope, $http, $location, Icon, ChartSettings, PieChartSettings, BarChartSettings) {
 		
 		$scope.pastReportsLength = 10;
 		$scope.timeTakenChartType = $scope.testCountChartType = "horizontalBar";
+		
+		$scope.init = function() {
+			$scope.getCategoryTimeTakenAverageOverNReports(1);
+			$scope.getCategoryTestLengthAverageOverNReports(1);
+		};
 		
 		$scope.getCategoryTimeTakenAverageOverNReports = function(pastReportsLength) {
 			$scope.timeTakenSelection = "Showing an average of past " + pastReportsLength + " builds.";
@@ -43,10 +48,48 @@ angular.module('Klov')
             });
 		};
 		
+		$scope.getCategoryTestLengthAverageOverNReports = function(pastReportsLength) {
+			$scope.testLengthSelection = "Showing an average of past " + pastReportsLength + " builds.";
+			
+			var req = {
+                method: 'GET',
+                url: '/rest/categories/search/getCategoryTestLengthAverageOverNReports',
+            	params: {
+            		reportsLength: pastReportsLength
+            	}
+            };
+
+            //$http.defaults.headers.post['X-CSRF-Token'] = $rootScope._csrf;
+
+            $http(req).
+            success(function(res) {
+            	var label = "", count = 0;
+                var labels = [], testCount = [];
+                
+            	for (var ix = 0; ix < res.length; ix++) {
+            		label = res[ix].name;
+            		count = res[ix].total;
+            		
+            		labels.push(label);
+            		testCount.push(count);
+            	}
+            	
+            	$scope.testCountByTagContainerWidth = document.getElementById("test-count-by-tag-container").clientWidth - 40;
+            	$scope.testCountByTagLabels = labels;
+            	$scope.testCountByTagData = testCount;
+            	$scope.testCountByTagOptions = BarChartSettings.options;
+
+            }).
+            error(function(res) {
+            	console.log("CategoryController.getCategoryTestLengthAverageOverNReports error! Message below:");
+                console.log(res);
+            });
+		}
+		
 		$scope.changeTimeTakenChartType = function(chart, type) {
 			if (type === "bar") {
 				if (chart === "timeTaken") {
-					$scope.testCountChartType = "horizontalBar";
+					$scope.timeTakenChartType = "horizontalBar";
 					$scope.timeTakenByTagOptions = BarChartSettings.options;
 				}
 				if (chart === "testLength") {
@@ -68,58 +111,6 @@ angular.module('Klov')
 			}
 		};
 		
-		$scope.getCategoryTestLengthAverageOverNReports = function(pastReportsLength) {
-			$scope.testLengthSelection = "Showing an average of past " + pastReportsLength + " builds.";
-			
-			var req = {
-	                method: 'GET',
-	                url: '/rest/categories/search/getCategoryTestLengthAverageOverNReports',
-	            	params: {
-	            		reportsLength: pastReportsLength
-	            	}
-	            };
-
-	            //$http.defaults.headers.post['X-CSRF-Token'] = $rootScope._csrf;
-
-	            $http(req).
-	            success(function(res) {
-	            	console.log(res);
-	            	
-	            	var label = "", count = 0;
-	                var labels = [], testCount = [];
-	                
-	            	for (var ix = 0; ix < res.length; ix++) {
-	            		label = res[ix].name;
-	            		count = res[ix].total;
-	            		
-	            		labels.push(label);
-	            		testCount.push(count);
-	            	}
-	            	
-	            	$scope.testCountByTagContainerWidth = document.getElementById("test-count-by-tag-container").clientWidth - 40;
-	            	$scope.testCountByTagLabels = labels;
-	            	$scope.testCountByTagData = testCount;
-	            	$scope.testCountByTagOptions = BarChartSettings.options;
-
-	            }).
-	            error(function(res) {
-	            	console.log("CategoryController.getCategoryTestLengthAverageOverNReports error! Message below:");
-	                console.log(res);
-	            });
-		}
-		
-		
-		
-		
-		/*<canvas id="time-taken-by-tag" 
-			width="{{timeTakenByTagContainerWidth}}" 
-			height="325" 
-			class="chart chart-bar" 
-			chart-data="timeTakenByTagData" 
-			chart-labels="timeTakenByTagLabels" 
-			chart-options="timeTakenByTagOptions">
-		</canvas>
-		*/
 	}]);
 		
 		
