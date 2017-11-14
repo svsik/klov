@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,6 +19,8 @@ public interface ReportRepositoryCustom {
     Long countByProject(Optional<Project> project);
     
     List<Report> findByCountOrderByDateTimeDesc(int count);
+    
+    List<Report> findIdByCountOrderByDateTimeDesc(Optional<Project> project, int count);
     
     void remove(String id);
     

@@ -43,7 +43,7 @@
 					<!-- ############ PAGE START-->
 					<div class="app-body-inner">
 						<div class="row-col">
-							<div class="col-xs-3 w-xl modal fade aside aside-lg" id="subnav">
+							<div class="col-xs-3 modal fade aside aside-lg" id="subnav">
 								<div class="row-col black b-r bg">
 									<div class="b-b">
 										<div class="navbar no-radius">
@@ -309,7 +309,7 @@
 									<!-- / -->
 								</div>
 							</div>
-							<div class="col-xs-4 id="detail">
+							<div class="col-xs-4" id="detail">
 								<div class="row-col white b-r">
 									<div class="b-b">
 										<div class="navbar no-radius">

@@ -16,10 +16,8 @@
   
   <!-- style -->
   <link rel="stylesheet" href="/css/animate.css/animate.min.css" type="text/css" />
-  <link rel="stylesheet" href="/css/glyphicons/glyphicons.css" type="text/css" />
   <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="/css/material-design-icons/material-design-icons.css" type="text/css" />
-  <link rel="stylesheet" href="/css/ionicons/css/ionicons.min.css" type="text/css" />
   <link rel="stylesheet" href="/css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="/css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="/libs/featherlight/featherlight.css" type="text/css" />

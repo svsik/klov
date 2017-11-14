@@ -8,7 +8,6 @@
 <!-- core -->
 <script src="/libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
 <script src="/libs/PACE/pace.min.js"></script>
-<script src="/libs/jquery-pjax/jquery.pjax.js"></script>
 <script src="/libs/blockUI/jquery.blockUI.js"></script>
 <script src="/libs/jscroll/jquery.jscroll.min.js"></script>
 <script src="/libs/select2/dist/js/select2.min.js"></script>

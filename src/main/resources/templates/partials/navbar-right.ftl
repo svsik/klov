@@ -11,14 +11,14 @@
 	</#if>
     <li class="nav-item dropdown pos-stc-xs">
         <a class="nav-link" data-toggle="dropdown">
-        <i class="ion-android-search w-24"></i>
+        <i class="fa fa-search"></i>
         </a>
         <div class="dropdown-menu text-color w-md animated fadeInUp pull-right">
             <!-- search form -->
             <form class="navbar-form form-inline navbar-item m-a-0 p-x v-m" role="search">
                 <div class="form-group l-h m-a-0">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search projects...">
+                        <input type="text" class="form-control" placeholder="Search tests..">
                         <span class="input-group-btn">
                         <button type="submit" class="btn white b-a no-shadow"><i class="fa fa-search"></i></button>
                         </span>

@@ -44,6 +44,17 @@ public class ReportRepositoryImpl implements ReportRepositoryCustom {
     public List<Report> findByCountOrderByDateTimeDesc(int count) {
         return mongoTemplate.find(new Query().limit(count), Report.class);
     }
+    
+    @Override
+    public List<Report> findIdByCountOrderByDateTimeDesc(Optional<Project> project, int count) {
+        Query q = new Query().limit(count).with(new Sort(Sort.Direction.DESC, "startTime"));
+        q.fields().include("id");
+        
+        if (project.isPresent())
+            q.addCriteria(Criteria.where("project").is(new ObjectId(project.get().getId())));
+        
+        return mongoTemplate.find(q, Report.class);
+    }
 
     @Override
     public Long countByProjectAndStartTimeGreaterThan(Optional<Project> project, Date date) {
@@ -149,61 +160,6 @@ public class ReportRepositoryImpl implements ReportRepositoryCustom {
         
         return dates;
     }
-    
-    /*@Override
-    public List<WeeklyReportAggregation> findByWeeklyAggregation(Optional<Project> project) {
-        DateTime today = DateTime.now();
-        Date[] startDates = {
-                today.withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(1)).withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(2)).withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(3)).withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(4)).withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(5)).withTimeAtStartOfDay().toDate(),
-                today.minus(Period.days(6)).withTimeAtStartOfDay().toDate()
-        };
-        Date[] endDates = {
-                today.withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(1)).withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(2)).withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(3)).withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(4)).withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(5)).withTime(23,59,59,999).toDate(),
-                today.minus(Period.days(6)).withTime(23,59,59,999).toDate()
-        };
-        
-        Aggregation pipeline;
-        AggregationResults<WeeklyReportAggregation> groupResults;
-        List<WeeklyReportAggregation> list = new ArrayList<WeeklyReportAggregation>();
-
-        AggregationOperation aggregationGroup = Aggregation.group().sum("parentLength").as("total").sum("passParentLength").as("passTotal").sum("skipParentLength").as("skipTotal");
-        AggregationOperation aggregationProject = Aggregation.project("total").and("passTotal").as("passTotal").and("skipTotal").as("skipTotal");
-        
-        for (int ix = 0; ix < startDates.length; ix++) {
-            if (project.isPresent()) {
-                pipeline = newAggregation(
-                        match(Criteria.where("project").is(new ObjectId(project.get().getId())).and("startTime").gt(startDates[ix]).and("endTime").lt(endDates[ix])),
-                        aggregationGroup,
-                        aggregationProject
-                );
-            } else {
-                pipeline = newAggregation(
-                        match(Criteria.where("startTime").gt(startDates[ix]).and("endTime").lt(endDates[ix])),
-                        aggregationGroup,
-                        aggregationProject
-                );
-            }
-            
-            groupResults = mongoTemplate.aggregate(pipeline, Report.class, WeeklyReportAggregation.class);
-            
-            if (groupResults.getMappedResults().size() > 0) {
-                list.addAll(groupResults.getMappedResults());
-                list.get(list.size()-1).setStartTime(startDates[ix]);
-            }
-        }
-        
-        return list;
-    }*/
     
     @Override
     public List<Report> findByCategoryNameList(Optional<Project> project, String name) {

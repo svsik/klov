@@ -1,6 +1,7 @@
 package com.aventstack.klov.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,6 +20,10 @@ public class Category extends KlovDocument implements Serializable {
     private String name;
     private String status;
     private String testName;  
+    private Long timeTaken;
+    private Integer testLength;
+    private List<String> testNameList;
+    private List<String> testIdList;
     
     public String getId() {
         return id;
@@ -67,6 +72,34 @@ public class Category extends KlovDocument implements Serializable {
     }
     public void setTestName(String testName) {
         this.testName = testName;
+    }
+    
+    public Long getTimeTaken() {
+        return timeTaken;
+    }
+    public void setTimeTaken(Long timeTaken) {
+        this.timeTaken = timeTaken;
+    }
+
+    public Integer getTestLength() {
+        return testLength;
+    }
+    public void setTestLength(Integer testLength) {
+        this.testLength = testLength;
+    }
+    
+    public List<String> getTestNameList() {
+        return testNameList;
+    }
+    public void setTestNameList(List<String> testNameList) {
+        this.testNameList = testNameList;
+    }
+
+    public List<String> getTestIdList() {
+        return testIdList;
+    }
+    public void setTestIdList(List<String> testIdList) {
+        this.testIdList = testIdList;
     }
     
 }
