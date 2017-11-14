@@ -8,6 +8,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.data.mongodb.core.aggregation.MatchOperation;
 import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.aventstack.klov.domain.AggregationCount;
@@ -81,6 +83,14 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
         AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Category.class, AggregationCount.class);
         
         return groupResults.getMappedResults();
+    }
+    
+    @Override
+    public List<Report> findReportsByCategoryName(Optional<Project> project, String name) {
+        Query query = new Query(Criteria.where("categoryNameList").in(name).and("project").is(new ObjectId(project.get().getId())))
+                .with(new Sort(Sort.Direction.DESC, "startTime"));
+        List<Report> list = mongoTemplate.find(query, Report.class);
+        return list;
     }
     
 }

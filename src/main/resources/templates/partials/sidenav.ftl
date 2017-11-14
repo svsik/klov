@@ -38,7 +38,7 @@
                         </a>
                         <ul class="nav-mega-3">
                             <li>
-                                <a href="/tags" >
+                                <a href="/tag-summary" >
                                 <span class="nav-text">Tags Snapshot</span>
                                 </a>
                             </li>

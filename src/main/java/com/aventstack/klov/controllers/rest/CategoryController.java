@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aventstack.klov.domain.AggregationCount;
 import com.aventstack.klov.domain.Category;
 import com.aventstack.klov.domain.Project;
+import com.aventstack.klov.domain.Report;
 import com.aventstack.klov.repository.CategoryRepository;
 
 @RestController
@@ -33,6 +34,12 @@ public class CategoryController {
     public List<AggregationCount> getCategoryTestLengthAverageOverNReports(@RequestParam("reportsLength") int reportsLength, HttpSession session) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         return repo.findTestLengthForPastNReports(project, reportsLength);
+    }
+    
+    @RequestMapping(value="/search/findReportsByCategoryName", method=RequestMethod.GET, produces="application/json")
+    public List<Report> findReportsByCategoryName(@RequestParam("name") String name, HttpSession session) {
+        Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
+        return repo.findReportsByCategoryName(project, name);
     }
     
 }

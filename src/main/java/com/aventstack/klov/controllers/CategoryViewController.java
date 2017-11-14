@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aventstack.klov.domain.AggregationCount;
 import com.aventstack.klov.domain.Category;
@@ -28,6 +27,19 @@ public class CategoryViewController {
     @Autowired
     private ProjectRepository<Project, String> projectRepo;
     
+    @GetMapping("/tag-summary")
+    public String tagSummary(HttpSession session, Map<String, Object> model) {
+        Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
+        model.put("project", project);
+        
+        List<AggregationCount> categoryList = categoryRepo.findDistinct(project);
+        model.put("categoryList", categoryList);
+        
+        model.put("projectList", projectRepo.findAll());
+        
+        return "tag-summary";
+    }
+    
     @GetMapping("/tags")
     public String tags(HttpSession session, Map<String, Object> model) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
@@ -39,12 +51,6 @@ public class CategoryViewController {
         model.put("projectList", projectRepo.findAll());
         
         return "tags";
-    }
-    
-    @GetMapping("/tag")
-    public String tag(@RequestParam("id") String id, Map<String, Object> model) {
-        
-        return "tag";
     }
 
 }
