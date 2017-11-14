@@ -30,24 +30,12 @@
                     </li>
                     <#if extentApiVersion=="pro">
                     <li>
-                        <a>
+                        <a href="/tags" class="no-ajax" alt="Dashboard" title="Dashboard">
                         <span class="nav-icon no-fade">
                         <i class="material-icons">local_offer</i>
                         </span>
                         <span class="nav-text">Tags</span>
                         </a>
-                        <ul class="nav-mega-3">
-                            <li>
-                                <a href="/tag-summary" >
-                                <span class="nav-text">Tags Snapshot</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/tags" >
-                                <span class="nav-text">Reports by Tag</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     </#if>
                 </ul>

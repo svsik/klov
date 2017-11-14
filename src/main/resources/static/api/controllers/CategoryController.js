@@ -88,53 +88,6 @@ angular.module('Klov')
             });
 		}
 		
-		$scope.findReportsByCategoryName = function(name) {
-			$scope.activeCategory = name;
-			
-			var req = {
-                method: 'GET',
-                url: '/rest/categories/search/findReportsByCategoryName',
-            	params: {
-            		name: name
-            	}
-            };
-
-            //$http.defaults.headers.post['X-CSRF-Token'] = $rootScope._csrf;
-
-            $http(req).
-            success(function(res) {
-            	$scope.reportList = res;
-            	console.log(res)
-            }).
-            error(function(res) {
-            	console.log("CategoryController.findReportsByCategoryName error! Message below:");
-                console.log(res);
-            });
-		}
-		
-		$scope.findTestsByReportIdForActiveCategory = function(reportId) {
-			var req = {
-                method: 'GET',
-                url: '/rest/tests/search/findByReportAndCategoryNameListIn',
-            	params: {
-            		report: reportId,
-            		categoryName: $scope.activeCategory
-            	}
-            };
-
-            //$http.defaults.headers.post['X-CSRF-Token'] = $rootScope._csrf;
-
-            $http(req).
-            success(function(res) {
-            	$scope.testList = res._embedded.test;
-            	$scope.bdd = $scope.testList[0].bdd;
-            }).
-            error(function(res) {
-            	console.log("CategoryController.findTestsByReportIdAndCategoryName error! Message below:");
-                console.log(res);
-            });
-		}
-		
 		$scope.changeTimeTakenChartType = function(chart, type) {
 			if (type === "bar") {
 				if (chart === "timeTaken") {
