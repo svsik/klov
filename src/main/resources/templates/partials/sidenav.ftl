@@ -13,19 +13,19 @@
                         <span class="text-xs">Main</span>
                     </li>
                     <li>
-                        <a href="/dashboard" class="no-ajax" alt="Dashboard" title="Dashboard">
-                        <span class="nav-icon no-fade">
-                        <i class="material-icons">dashboard</i>
-                        </span>
-                        <span class="nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/builds" class="no-ajax" alt="Builds" title="Builds">
                         <span class="nav-icon no-fade">
                         <i class="material-icons">dns</i>
                         </span>
                         <span class="nav-text">Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard" class="no-ajax" alt="Dashboard" title="Dashboard">
+                        <span class="nav-icon no-fade">
+                        <i class="material-icons">dashboard</i>
+                        </span>
+                        <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <#if extentApiVersion=="pro">

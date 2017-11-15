@@ -27,7 +27,7 @@ public class HomeController {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         
         if (project.isPresent()) {
-            return "redirect:/dashboard";
+            return "redirect:/builds";
         } else {
             List<Project> projectList = projectRepo.findAll();
             model.put("projectList", projectList);
@@ -44,7 +44,7 @@ public class HomeController {
             return "redirect:/projects";
 
         session.setAttribute("project", project);
-        return "redirect:/dashboard";
+        return "redirect:/builds";
     }
     
 }
