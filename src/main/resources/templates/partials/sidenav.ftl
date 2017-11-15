@@ -21,7 +21,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/reports" class="no-ajax" alt="Builds" title="Builds">
+                        <a href="/builds" class="no-ajax" alt="Builds" title="Builds">
                         <span class="nav-icon no-fade">
                         <i class="material-icons">dns</i>
                         </span>

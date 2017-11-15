@@ -42,8 +42,8 @@ public class ReportViewController {
     @Autowired
     private ProjectRepository<Project, String> projectRepo;
 
-    @GetMapping("/reports")
-    public String reports(Map<String, Object> model, Pageable pageable, HttpSession session) {
+    @GetMapping("/builds")
+    public String builds(Map<String, Object> model, Pageable pageable, HttpSession session) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         model.put("project", project);
         
@@ -70,11 +70,11 @@ public class ReportViewController {
         model.put("prettyTime", new PrettyTime());
         model.put("user", session.getAttribute("user"));
         
-        return "reports";
+        return "builds";
     }
     
-    @GetMapping("/report")
-    public String report(@RequestParam("id") String id, @RequestParam("status") Optional<String> status, HttpSession session, Map<String, Object> model) {
+    @GetMapping("/build")
+    public String build(@RequestParam("id") String id, @RequestParam("status") Optional<String> status, HttpSession session, Map<String, Object> model) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         model.put("project", project);
         
@@ -95,7 +95,41 @@ public class ReportViewController {
         if (!testList.isEmpty())
             model.put("isBDD", testList.get(0).getBdd());
         
-        return "report";
+        return "build";
     }
     
+    @GetMapping("/build-summary")
+    public String buildSummary(@RequestParam("id") String id, @RequestParam("status") Optional<String> status, HttpSession session, Map<String, Object> model) {
+        Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
+        model.put("project", project);
+        
+        BeansWrapper bw = new BeansWrapperBuilder(freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS).build();
+        TemplateHashModel statics = bw.getStaticModels(); 
+        model.put("statics", statics);
+        
+        model.put("prettyTime", new PrettyTime());
+        
+        List<Project> projectList = projectRepo.findAll();
+        model.put("projectList", projectList);
+        
+        Report report = reportRepo.findById(id);
+        
+        List<Test> testList;
+        if (status.isPresent())
+            testList = testRepo.findByReportAndLevelAndStatus(new ObjectId(report.getId()), 0, status.get());
+        else
+            testList = testRepo.findByReportAndLevel(new ObjectId(report.getId()), 0);
+        
+        model.put("Color", new Color());
+        model.put("report", report);
+        model.put("testList", testList);
+        model.put("statusList", Status.getAllowedTestStatusHierarchy());
+        
+        model.put("isBDD", false);
+        if (!testList.isEmpty())
+            model.put("isBDD", testList.get(0).getBdd());
+        
+        return "build-summary";
+    }
+        
 }

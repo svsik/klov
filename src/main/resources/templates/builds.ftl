@@ -3,19 +3,6 @@
 <html lang="en" ng-app="Klov">
     <#include 'partials/head.ftl'>
     <style type="text/css">
-        table th, table td {
-        vertical-align: middle !important;
-        border-bottom: 1px solid rgba(120, 130, 140, 0.12) !important;
-        }
-        td.report-name {
-        width: 35%;
-        }
-        td.report-categories {
-        width: 20%;
-        }
-        .easyPieChart {
-        float: left;
-        }
         .mt-70 {
          margin-top: 70px !important;
          }
@@ -131,12 +118,12 @@
 	                                    <div class="box-tool">
 	                                        <ul class="nav">
 	                                            <li class="nav-item inline">
-	                                                <a class="nav-link" alt="View all tests" title="View all tests" href="/report?id=${report.id}">
+	                                                <a class="nav-link" alt="View all tests" title="View all tests" href="/build?id=${report.id}">
 	                                                <button class="btn btn-icon white"><i class="material-icons">input</i></button>
 	                                                </a>
 	                                            </li>
 	                                            <li class="nav-item inline">
-	                                                <a class="nav-link" alt="View failed tests" title="View failed tests" href="/report?id=${report.id}&status=fail">
+	                                                <a class="nav-link" alt="View failed tests" title="View failed tests" href="/build?id=${report.id}&status=fail">
 	                                                <button class="btn btn-icon white"><i class="material-icons">report</i></button>
 	                                                </a>
 	                                            </li>
@@ -148,7 +135,6 @@
 	                                                </a>
 	                                            </li>
 	                                            </#if>
-	                                            </li>
 	                                        </ul>
 	                                    </div>
 	                                    <div class="box-body">
@@ -187,18 +173,18 @@
                             <#assign disabled="">
                             <#if page==0><#assign disabled="disabled"></#if>
                             <li class="page-item ${disabled}">
-                                <a class="page-link" href="/reports?page=0" aria-label="Previous">
+                                <a class="page-link" href="/builds?page=0" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                                 </a>
                             </li>
                             <#list 0..pages-1 as x>
-                            <li class="page-item"><a class="page-link" href="/reports?page=${x}">${x+1}</a></li>
+                            <li class="page-item"><a class="page-link" href="/builds?page=${x}">${x+1}</a></li>
                             </#list>
                             <#assign disabled="">
                             <#if page==pages-1><#assign disabled="disabled"></#if>
                             <li class="page-item ${disabled}">
-                                <a class="page-link" href="/reports?page=${pages-1}" aria-label="Next">
+                                <a class="page-link" href="/builds?page=${pages-1}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                                 </a>
