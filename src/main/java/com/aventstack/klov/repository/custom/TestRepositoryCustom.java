@@ -26,5 +26,7 @@ public interface TestRepositoryCustom {
     List<AggregationCount> findByNameByProjectByTopFailed(Optional<Project> project);
     
     List<Test> findFirstNByProjectOrderByEndTimeDesc(Integer n, Optional<Project> project);
+
+    List<AggregationCount> findFailedTestLengthByProjectCategories(Optional<Project> project);
     
 }

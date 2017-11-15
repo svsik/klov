@@ -130,12 +130,30 @@ public class TestRepositoryImpl implements TestRepositoryCustom {
     
     @Override
     public List<AggregationCount> findByNameByProjectByTopFailed(Optional<Project> project) {
-        Criteria matchCriteria = Criteria.where("name").ne(null).and("status").is("fail");
+        Criteria c = Criteria.where("name").ne(null).and("status").is("fail");
         if (project.isPresent())
-            matchCriteria.and("project").is(new ObjectId(project.get().getId()));
+            c.and("project").is(new ObjectId(project.get().getId()));
         
         Aggregation pipeline = newAggregation(
-                match(matchCriteria),
+                match(c),
+                group("name").count().as("total"),
+                project("total").and("name").previousOperation()
+        );
+        AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Test.class, AggregationCount.class);
+        
+        return groupResults.getMappedResults();
+    }
+    
+    @Override
+    public List<AggregationCount> findFailedTestLengthByProjectCategories(Optional<Project> project) {
+        Criteria c = Criteria
+                .where("name").ne(null)
+                .and("categoryNameList").ne(null)
+                .and("status").is("fail")
+                .and("project").is(new ObjectId(project.get().getId()));
+
+        Aggregation pipeline = newAggregation(
+                match(c),
                 group("name").count().as("total"),
                 project("total").and("name").previousOperation()
         );
