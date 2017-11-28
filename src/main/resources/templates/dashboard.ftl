@@ -194,7 +194,7 @@
 									</div>
 									<div class="box-tool">
 										<div class="dropdown">
-											<a data-toggle="dropdown" class="btn btn-xs rounded white dropdown-toggle">Today</a>
+											<a data-toggle="dropdown" class="btn btn-xs rounded white dropdown-toggle">Select Period</a>
 											<div class="dropdown-menu pull-right">
 												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(1)">Last 24 hours</a>
 												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(7)">Last 7 days</a>
