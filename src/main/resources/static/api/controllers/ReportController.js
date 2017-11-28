@@ -53,7 +53,7 @@ angular.module('Klov')
                     total.push(passed[passed.length-1] + failed[failed.length-1] + others[others.length-1]);
                 }
             	
-            	$scope.buildDurationVsTotalsData = [ duration, total ];
+            	$scope.buildDurationVsTotalsData = [ duration ]; //[ duration, total ];
             	$scope.buildDurationVsTotalsDatasetOverride = BarChartSettings.datasetOverrideLineBar;
 		        $scope.buildDurationVsTotalsLabels = labels;
 		        $scope.buildDurationVsTotalsOptions = $scope.analysisOptions;

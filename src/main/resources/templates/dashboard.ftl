@@ -87,8 +87,8 @@
 									<div class="col-sm-8">
 										<div class="box">
 											<div class="box-header">
-												<h3>Build Duration vs Total Tests <span class="label warn">seconds vs count</h3>
-												<small>Build performance vs number of tests (showing last 10 only)</small>
+												<h3>Build Duration <span class="label warn">seconds</h3>
+												<small>Build performance (showing last 10 only)</small>
 											</div>
 											<!-- <div class="box-tool">
 												<ul class="nav">
@@ -154,7 +154,7 @@
 									<div class="col-sm-12">
 										<div class="box">
 											<div class="box-header">
-												<h3>Builds</h3>
+												<h3>Builds with Total Counts and Status Breakdown</h3>
 												<small>A general overview of your run sessions (showing last 10 only)</small>
 											</div>
 											<!-- <div class="box-tool">
