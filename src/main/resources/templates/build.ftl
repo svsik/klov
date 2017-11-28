@@ -210,6 +210,14 @@
 														<span class="label brown">{{currentTest.endTime | date: 'MMM dd, yyyy hh:mm:ss'}}</span>
 														<span class="label {{getColor(currentTest.status)}}">{{currentTest.status}}</span>
 														
+														<!-- parent categories -->
+														<div ng-if="currentTest.categoryNameList">
+															<span class="label rounded warn" style="margin-right:2px;" ng-repeat="category in currentTest.categoryNameList">
+																<i class="fa fa-tag"></i> &nbsp;
+																{{category}}
+															</span>
+														</div>
+														
 														<br/><br/>
 														
 														<!-- parent nodes -->
@@ -217,7 +225,7 @@
 															<!-- node1 -->
 															<div class="p-a box light border-box" ng-repeat="node1 in currentTest.nodes">
 																<p ng-if="node1.categorized">
-																	<span class="label blue-grey" ng-repeat="category in node1.categoryNameList"><i class="fa fa-tag"></i> &nbsp; {{category}}</span>
+																	<span class="label rounded warn" ng-repeat="category in node1.categoryNameList"><i class="fa fa-tag"></i> &nbsp; {{category}}</span>
 																</p>
 															
 																<h6><small class="_600" ng-if="node1.bddType">{{node1.bddType}}:</small> {{node1.name}}</h6>
@@ -282,6 +290,14 @@
 														<span class="label brown">{{currentTest.endTime | date: 'MMM dd, yyyy hh:mm:ss'}}</span>
 														<span class="label {{getColor(currentTest.status)}}">{{currentTest.status}}</span>
 														
+														<!-- parent categories -->
+														<div ng-if="currentTest.categoryNameList">
+															<span class="label rounded warn" style="margin-right:2px;" ng-repeat="category in currentTest.categoryNameList">
+																<i class="fa fa-tag"></i> &nbsp;
+																{{category}}
+															</span>
+														</div>
+														
 														<br/>
 														<br/>
 														
@@ -313,6 +329,14 @@
 																<span class="label {{getColor(node1.status)}} pull-right">{{node1.status}}</span>
 																<h6 class="_600">{{node1.name}}</h6>
 																
+																<!-- node1 categories -->
+																<div ng-if="node1.categoryNameList">
+																	<span class="label rounded warn" ng-repeat="category in node1.categoryNameList">
+																		<i class="fa fa-tag"></i> &nbsp;
+																		{{category}}
+																	</span>
+																</div>
+																
 																<!-- node1 logs -->
 																<div class="streamline" ng-if="node1.logs">
 															        <div ng-repeat="log in node1.logs" class="sl-item b-{{getBootstrapColor(log.status)}}">
@@ -341,6 +365,14 @@
 																	<div ng-repeat="node2 in node1.nodes">
 																		<span class="label {{getColor(node2.status)}} pull-right">{{node2.status}}</span>
 																		<h6 class="_600">{{node2.name}}</h6>
+																		
+																		<!-- node2 categories -->
+																		<div ng-if="node2.categoryNameList">
+																			<span class="label rounded warn" ng-repeat="category in node2.categoryNameList">
+																				<i class="fa fa-tag"></i> &nbsp;
+																				{{category}}
+																			</span>
+																		</div>
 																		
 																		<!-- node2 logs -->
 																		<div class="streamline" ng-if="node2.logs">
