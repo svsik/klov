@@ -330,7 +330,7 @@
 																<h6 class="_600">{{node1.name}}</h6>
 																
 																<!-- node1 categories -->
-																<div ng-if="node1.categoryNameList">
+																<div style="margin-top:-10px;margin-bottom:10px;" ng-if="node1.categoryNameList">
 																	<span class="label rounded warn" ng-repeat="category in node1.categoryNameList">
 																		<i class="fa fa-tag"></i> &nbsp;
 																		{{category}}

@@ -35,3 +35,12 @@ body.black .table > tbody > tr > td, body.black .table > tbody > tr > th, body.b
 .table td, .table th {
     padding: .572rem;
 }
+textarea {
+	width: 100% !important;
+	height: 200px !important;
+}
+
+/* themes */
+body.dark pre, body.grey pre, body.black pre {
+	background: transparent;	
+}
