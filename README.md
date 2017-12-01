@@ -18,7 +18,7 @@ Download latest copy from [extentreports.com](http://extentreports.com/community
 3. Run Klov:
 
 ```java
-java -jar klov-0.0.2.jar
+java -jar klov-0.0.3.jar
 ```
 
 #### MongoDB Settings
