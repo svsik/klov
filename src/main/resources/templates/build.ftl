@@ -263,18 +263,14 @@
 																		<div class="log" ng-if="node2.logs" ng-repeat="log in node2.logs">
 																			<span ng-bind-html="trust(log.details)"></span>
 																			<a ng-if="log.media" ng-repeat="m in log.media" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image">
-																				<span class="label">
-																					<i class="fa fa-image"></i>
-																				</span>
+																				<span class="label info">img</span>
 																			</a>
 																		</div>
 
 																		<!-- node2 media -->
-																		<div ng-if="node2.media && !m.log" ng-repeat="m in node2.media" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image">
-																			<span class="label">
-																				<i class="fa fa-image"></i>																		
-																			</span>
-																		</div>
+																		<a ng-if="node2.media && !m.log" ng-repeat="m in node2.media" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image">
+																			<span class="label info">img</span>
+																		</a>
 																	</div>
 																</div>
 															</div>
@@ -354,10 +350,11 @@
 															    </div>
 																
 																<!-- node1 media -->
-																<span class="label" ng-if="node1.media" ng-repeat="m in node1.media" style="margin-right: 5px;">
-																	<i class="fa fa-image"></i>
-																	<a ng-if="m.base64String" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image"></a>
-																</span>
+																<div ng-if="node1.media">
+																	<a ng-repeat="m in node1.media" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image">
+																		<span class="label">img</span>
+																	</a>
+																</div>
 																
 																<!-- node1 nodes -->
 																<div class="p-a" ng-if="node1.nodes.length">
@@ -392,10 +389,11 @@
 																	    </div>
 																		
 																		<!-- node2 media -->
-																		<span class="label" ng-if="node2.media" ng-repeat="m in node2.media" style="margin-right: 5px;">
-																			<i class="fa fa-image"></i>
-																			<a ng-if="m.base64String" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image"></a>
-																		</span>
+																		<div ng-if="node2.media">
+																			<a ng-repeat="m in node1.media" href="data:image/png;base64,{{m.base64String}}" data-featherlight="image">
+																				<span class="label">img</span>
+																			</a>
+																		</div>
 																	</div>
 																</div>
 															</div>
