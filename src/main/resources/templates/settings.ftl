@@ -9,7 +9,7 @@
 				<div class="app-header white bg b-b">
 					<div class="navbar" data-pjax>
 						<a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
-						<i class="ion-navicon"></i>
+						<i class="material-icons">reorder</i>
 						</a>
 						<div class="navbar-item pull-left h5" id="pageTitle">Account Settings</div>
 						<#include 'partials/navbar-right.ftl'>

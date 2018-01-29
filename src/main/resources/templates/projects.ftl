@@ -22,7 +22,7 @@
                 <div class="app-header indigo-800 b-b">
                     <div class="navbar" data-pjax>
                         <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up p-r m-a-0">
-                        <i class="ion-navicon"></i>
+                        <i class="material-icons">reorder</i>
                         </a>
                         <div class="navbar-item pull-left h6" id="pageTitle">klov.</div>
                     </div>

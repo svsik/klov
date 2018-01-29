@@ -53,7 +53,8 @@ angular.module('Klov').
                         display: false
                     },
                     ticks: {
-                        fontSize: 10
+                        fontSize: 10,
+                        beginAtZero: true
                     },
                     barPercentage: 0.1,
                 }],
