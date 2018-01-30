@@ -58,12 +58,12 @@
 													</a>
 													<div class="dropdown-menu text-color pull-right" role="menu">
 														<#list statusList as status>
-														<a href="/report?id=${report.id}&status=${status?lower_case}" class="dropdown-item">
+														<a href="/build?id=${report.id}&status=${status?lower_case}" class="dropdown-item">
 														<span class="label ${Color.byStatus(status)}">${status?lower_case}</span>
 														</a>
 														</#list>
 														<div class="dropdown-divider"></div>
-														<a class="dropdown-item" href="/report?id=${report.id}">
+														<a class="dropdown-item" href="/build?id=${report.id}">
 														<i class="fa fa-refresh"></i>
 														Reset
 														</a>
