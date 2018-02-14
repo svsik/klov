@@ -15,38 +15,38 @@ import com.aventstack.klov.repository.custom.TestRepositoryCustom;
 @RepositoryRestResource(collectionResourceRel = "test", path = "tests")
 public interface TestRepository<T, ID extends Serializable> extends MongoRepository<Test, String>, TestRepositoryCustom {
 
-    public long count();
+    long count();
     
-    public Long countByReport(@Param("report") ObjectId report);
+    Long countByReport(@Param("report") ObjectId report);
     
-    public Long countByReportAndLevel(@Param("report") ObjectId report, @Param("level") Integer level);
+    Long countByReportAndLevel(@Param("report") ObjectId report, @Param("level") Integer level);
     
-    public Long countByProject(@Param("project") ObjectId project);
+    Long countByProject(@Param("project") ObjectId project);
     
-    public Long countByChildNodesLength(@Param("length") Integer length);
+    Long countByChildNodesLength(@Param("length") Integer length);
     
-    public Test findById(@Param("id") String id);
+    Test findById(@Param("id") String id);
     
-    public List<Test> findByName(@Param("name") String name);
+    List<Test> findByName(@Param("name") String name);
     
-    public boolean exists(@Param("id") String id);
+    boolean exists(@Param("id") String id);
     
-    public List<Test> findAll();
+    List<Test> findAll();
     
-    public List<Test> findFirst10ByOrderByEndTimeDesc();
+    List<Test> findFirst10ByOrderByEndTimeDesc();
     
-    public List<Test> findFirst10ByProjectOrderByEndTimeDesc(@Param("project") ObjectId project);
+    List<Test> findFirst10ByProjectOrderByEndTimeDesc(@Param("project") ObjectId project);
     
-    public List<Test> findByReport(@Param("report") ObjectId report);
+    List<Test> findByReport(@Param("report") ObjectId report);
     
-    public List<Test> findByReportAndLevel(@Param("report") ObjectId report, @Param("level") Integer level); //
+    List<Test> findByReportAndLevel(@Param("report") ObjectId report, @Param("level") Integer level); //
     
-    public List<Test> findByReportAndLevelAndStatus(@Param("report") ObjectId report, @Param("level") Integer level, @Param("status") String status); //
+    List<Test> findByReportAndLevelAndStatus(@Param("report") ObjectId report, @Param("level") Integer level, @Param("status") String status); //
     
-    public List<Test> findByProject(@Param("project") ObjectId project);
+    List<Test> findByProject(@Param("project") ObjectId project);
     
-    public List<Test> findByStartTimeGreaterThan(@Param("date") Date date);
+    List<Test> findByStartTimeGreaterThan(@Param("date") Date date);
     
-    public List<Test> findByReportAndCategoryNameListIn(@Param("report") ObjectId report, @Param("categoryName") String categoryName);
+    List<Test> findByReportAndCategoryNameListIn(@Param("report") ObjectId report, @Param("categoryName") String categoryName);
     
 }

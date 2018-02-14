@@ -13,14 +13,14 @@ import com.aventstack.klov.repository.custom.AuthorRepositoryCustom;
 @RepositoryRestResource(collectionResourceRel = "author", path = "authors")
 public interface AuthorRepository<T, ID extends Serializable> extends MongoRepository<Author, String>, AuthorRepositoryCustom {
 
-    public long count();
+    long count();
     
-    public Author findById(@Param("id") String id);
+    Author findById(@Param("id") String id);
     
-    public List<Author> findByName(@Param("name") String name);
+    List<Author> findByName(@Param("name") String name);
     
-    public boolean exists(@Param("id") String id);
+    boolean exists(@Param("id") String id);
     
-    public List<Author> findAll();
+    List<Author> findAll();
             
 }

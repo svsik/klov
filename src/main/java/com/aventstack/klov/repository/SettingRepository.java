@@ -12,6 +12,6 @@ import com.aventstack.klov.domain.User;
 @RepositoryRestResource(exported = false)
 public interface SettingRepository<T, ID extends Serializable> extends MongoRepository<Setting, String> {
 
-    public User findOneByName(@Param("name") String name);
+    User findOneByName(@Param("name") String name);
     
 }

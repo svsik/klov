@@ -13,14 +13,14 @@ import com.aventstack.klov.repository.custom.CategoryRepositoryCustom;
 @RepositoryRestResource(collectionResourceRel = "category", path = "categories")
 public interface CategoryRepository<T, ID extends Serializable> extends MongoRepository<Category, String>, CategoryRepositoryCustom {
 
-    public long count();
+    long count();
     
-    public Category findById(@Param("id") String id);
+    Category findById(@Param("id") String id);
     
-    public List<Category> findByName(@Param("name") String name);
+    List<Category> findByName(@Param("name") String name);
     
-    public boolean exists(@Param("id") String id);
+    boolean exists(@Param("id") String id);
     
-    public List<Category> findAll();
+    List<Category> findAll();
             
 }

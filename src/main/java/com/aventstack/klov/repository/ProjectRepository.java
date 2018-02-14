@@ -13,14 +13,14 @@ import com.aventstack.klov.repository.custom.ProjectRepositoryCustom;
 @RepositoryRestResource(collectionResourceRel = "project", path = "projects")
 public interface ProjectRepository<T, ID extends Serializable> extends MongoRepository<Project, String>, ProjectRepositoryCustom {
 
-    public long count();
+    long count();
     
-    public Project findById(@Param("id") String id);
+    Project findById(@Param("id") String id);
     
-    public List<Project> findByName(@Param("name") String name);
+    List<Project> findByName(@Param("name") String name);
     
-    public boolean exists(@Param("id") String id);
+    boolean exists(@Param("id") String id);
     
-    public List<Project> findAll();
+    List<Project> findAll();
         
 }

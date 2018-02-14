@@ -13,14 +13,14 @@ import com.aventstack.klov.domain.Media;
 @RepositoryRestResource(collectionResourceRel = "media", path = "media")
 public interface MediaRepository<T, ID extends Serializable> extends MongoRepository<Media, String> {
 
-    public long count();
+    long count();
     
-    public Media findById(@Param("id") String id);
+    Media findById(@Param("id") String id);
         
-    public List<Media> findByTest(@Param("test") ObjectId test);
+    List<Media> findByTest(@Param("test") ObjectId test);
     
-    public List<Media> findByLog(@Param("log") ObjectId log);
+    List<Media> findByLog(@Param("log") ObjectId log);
     
-    public boolean exists(@Param("id") String id);
+    boolean exists(@Param("id") String id);
             
 }

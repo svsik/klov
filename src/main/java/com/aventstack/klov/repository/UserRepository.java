@@ -13,6 +13,6 @@ import com.aventstack.klov.domain.User;
 public interface UserRepository<T, ID extends Serializable> extends MongoRepository<User, String> {
 
     @RestResource(exported = false)
-    public User findOneByName(@Param("name") String name);
+    User findOneByName(@Param("name") String name);
     
 }
