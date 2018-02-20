@@ -1,21 +1,21 @@
-## klov.
+## klovv.
 
 [![Join the chat at https://gitter.im/anshooarora/klov](https://badges.gitter.im/anshooarora/klov.svg)](https://gitter.im/anshooarora/klov?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee786f7b7f7f4947b4953398428efa18)](https://www.codacy.com/app/anshooarora/klov?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=anshooarora/klov&amp;utm_campaign=Badge_Grade)
 
 Demo:  [klov.herokuapp.com](http://klov.herokuapp.com)
 
-Reporting server for Extent API. * klov replaces ExtentX.
+Reporting server for Extent API. * klovv replaces ExtentX.
 
 ### Download
 
 Download latest copy from [extentreports.com](http://extentreports.com/community/)
 
 
-### Klov Installation
+### Klovv Installation
 
 1. Install MongoDB (skip if you have this already)
 2. Install Redis-Server (skip if you do not plan to use Redis, see section "Using Klov Without Redis")
-3. Run Klov:
+3. Run Klovv:
 
 ```java
 java -jar klov-0.0.3.jar
@@ -45,9 +45,9 @@ spring.redis.host=localhost
 spring.redis.port=6379
 ```
 
-#### Using Klov without Redis
+#### Using Klovv without Redis
 
-To use Klov without Redis, simply uncomment this line in `application.properties`:
+To use Klovv without Redis, simply uncomment this line in `application.properties`:
 
 ```
 spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
