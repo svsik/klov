@@ -4,10 +4,9 @@
 	
     <groupId>com.aventstack</groupId>
     <artifactId>klov</artifactId>
-    <version>0.0.3</version>
+    <version>0.1.1</version>
     <name>klov</name>
-    <url>http://extentreports.com</url>
-	
+
     <developers>
         <developer>
             <name>Anshoo Arora</name>
@@ -18,7 +17,7 @@
             </roles>
         </developer>
     </developers>
-	
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

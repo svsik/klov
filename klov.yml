@@ -5,8 +5,8 @@ metadata:
   annotations:
     description: Template to create a Klov test executions report server
     iconClass: java
-    tags: java,springboot
-    version: 1.0
+    tags: test,extent
+    version: "1.0"
   name: klov-mongodb-extent
 
 parameters:
@@ -19,7 +19,7 @@ parameters:
   displayName: Application Namespace
   name: APP_NAMESPACE
   required: true
-  value: cicd-kbcdemo
+  value: kamil
 - description: The URL of the repository with your application source code.
   displayName: Git Repository URL
   name: GIT_REPO
@@ -43,7 +43,7 @@ parameters:
 - displayName: Database Volume Capacity
   description: Size of persistent storage for database volume.
   name: VOLUME_CAPACITY
-  value: 1Gi
+  value: "1Gi"
   required: true
 - displayName: Datasource Minimum Pool Size
   description: Sets xa-pool/min-pool-size for the configured datasource.
@@ -105,32 +105,27 @@ parameters:
   name: MONGODB_IMAGE_STREAM_TAG
   value: '3.2'
   required: true
+- description: Build dir
+  displayName: Build dir
+  name: BUILD_DIR
+  required: true
+  value: target
+- description: Sets maven mirror
+  displayName: Maven mirror
+  name: MVN_MIRROR
+  required: false
+  value: http://nexus-cicd-kbcdemo.52.178.132.107.nip.io/repository/all/
 - description: Sets maven arguments
   displayName: Maven arguments
   name: MVN_ARGS
   required: true
   value: |-
-    -Djava.net.preferIPv4Stack=true -e -Popenshift -DskipTests clean package
-- description: Sets maven build dir
-  displayName: Maven build dir
-  name: BUILD_DIR
-  required: true
-  value: target
-- description: Sets deployment dir
-  displayName: Deployment dir
-  name: DEPLOY_PATH
-  required: true
-  value: /opt/openshift/test-run
-- description: Sets ITAF args
-  displayName: ITAF args
-  name: ITAF_ARGS
-  required: false
-  value: " -e Openshift -ci true"
+    -Djava.net.preferIPv4Stack=true -e -Popenshift clean package
 
 objects:
 
-- kind: ImageStream
-  apiVersion: v1
+- apiVersion: v1
+  kind: ImageStream
   metadata:
     name: ${APP_NAME}
     labels:
@@ -140,8 +135,8 @@ objects:
   kind: BuildConfig
   metadata:
     labels:
-      app: extgw
-    name: extgw-pipeline
+      app: ${APP_NAME}
+    name: ${APP_NAME}
   spec:
     strategy:
       type: Source
@@ -149,21 +144,18 @@ objects:
         from:
           kind: ImageStreamTag
           name: sti-builder:latest
+          namespace: cicd-kbcdemo
         env:
+          - name: ARTIFACT_DIR
+            value: ${BUILD_DIR}
           - name: APP_SUFFIX
-            value: "original-ITAF"
+            value: ${APP_NAME}
           - name: MAVEN_MIRROR_URL
             value: ${MVN_MIRROR}
           - name: MAVEN_ARGS
             value: ${MVN_ARGS}
-          - name: ARTIFACT_DIR
-            value: ${BUILD_DIR}
-          - name: DEPLOY_DIR
-            value: ${DEPLOY_PATH}
-          - name: APP_OPTIONS
-            value: ${ITAF_ARGS}
         incremental: true
-        namespace: cicd-kbcdemo
+        namespace: ${APP_NAMESPACE}
     successfulBuildsHistoryLimit: 5
     source:
       git:
@@ -209,20 +201,20 @@ objects:
         - env:
           - name: DB_SERVICE_PREFIX_MAPPING
             value: ${APP_NAME}-mongodb=DB
-                    - name: DB_USERNAME
-                      value: ${DB_USERNAME}
-                    - name: DB_PASSWORD
-                      value: ${DB_PASSWORD}
-                    - name: DB_DATABASE
-                      value: ${DB_DATABASE}
-                    - name: DB_ADMIN_PASSWORD
-                      value: ${DB_ADMIN_PASSWORD}
-                    - name: DB_MIN_POOL_SIZE
-                      value: ${DB_MIN_POOL_SIZE}
-                    - name: DB_MAX_POOL_SIZE
-                      value: ${DB_MAX_POOL_SIZE}
-                    - name: DB_TX_ISOLATION
-                      value: ${DB_TX_ISOLATION}
+          - name: DB_USERNAME
+            value: ${DB_USERNAME}
+          - name: DB_PASSWORD
+            value: ${DB_PASSWORD}
+          - name: DB_DATABASE
+            value: ${DB_DATABASE}
+          - name: DB_ADMIN_PASSWORD
+            value: ${DB_ADMIN_PASSWORD}
+          - name: DB_MIN_POOL_SIZE
+            value: ${DB_MIN_POOL_SIZE}
+          - name: DB_MAX_POOL_SIZE
+            value: ${DB_MAX_POOL_SIZE}
+          - name: DB_TX_ISOLATION
+            value: ${DB_TX_ISOLATION}
           image: ' '
           imagePullPolicy: Always
           livenessProbe:
@@ -395,7 +387,7 @@ objects:
     host: ${HOSTNAME_HTTP}
     to:
       name: ${APP_NAME}
-  
+
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
