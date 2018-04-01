@@ -166,6 +166,9 @@ objects:
     - github:
         secret: mzvDbyXYMPqDm3J6QWvR
       type: GitHub
+    - generic:
+        secret: jOCm2HKXOVQglKZZ3cDt
+      type: Generic
     - type: ConfigChange
     - imageChange: {}
       type: ImageChange
