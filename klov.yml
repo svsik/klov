@@ -334,7 +334,7 @@ objects:
         volumes:
         - name: ${APP_NAME}-mongodb-pvol
           persistentVolumeClaim:
-            claimName: ${APP_NAME}-mongodb-claim
+            claimName: ${APP_NAME}-mongodb-pv
 
 - apiVersion: v1
   kind: Service
@@ -391,7 +391,7 @@ objects:
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    name: ${APP_NAME}-mongodb-claim
+    name: ${APP_NAME}-mongodb-pv
     labels:
       application: ${APP_NAME}
   spec:
